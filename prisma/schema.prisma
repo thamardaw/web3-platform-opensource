@@ -265,17 +265,17 @@ model PasswordReset {
   tokenExpireDate String?
 }
 
-model Invoice{
+model Asset{
   Id String @id @default(cuid())
-  invoiceId           String
-  originalInvoice     String
+  assetId           String
+  originalAsset       String
   status              String
   issueDate           String
   paymentTerm         String
   expectedDayDelays   String
   saleDate            String
   originalOwnerId     String
-  currentOwnerId      String?  
+  currentOwnerId      String?
   payerInfo           PayerInfo?
   order                             Order[]
 }
@@ -286,10 +286,10 @@ model PayerInfo{
   payerRefLink  String
   payerLogo     String
   payerDescription  String
-  invoiceFaceValue  String
-  invoiceCurrency   String
-  invoiceId      String @unique 
-  invoice         Invoice   @relation(fields: [invoiceId], references: [Id], onDelete: Cascade)
+  assetFaceValue  String
+  assetCurrency   String
+  assetId      String @unique
+  asset Asset @relation(fields: [assetId], references: [Id], onDelete: Cascade)
 }
 
 model TradeInfo{
@@ -303,7 +303,7 @@ model TradeInfo{
 model TradeHistory{
   Id String @id @default(cuid())
   transitionDate DateTime @default(now())
-  invoiceId String
+  assetId String
   sellerId  String
   buyerId   String
   purchasePrice String
@@ -313,8 +313,6 @@ model TradeHistory{
   collectionFeesRate String
   funderIncomeTaxRate String
 }
-
-
 
 model Wallet{
   Id String @id @default(cuid())
@@ -339,7 +337,7 @@ model Ledger {
   Id String @id @default(cuid())
   walletId String
   wallet  Wallet @relation(fields: [walletId], references: [Id], onDelete: Cascade)
-  userId String 
+  userId String
   user User  @relation(fields: [userId], references: [id])
   resultXDR String?
   action  String
@@ -377,14 +375,14 @@ model Order{
   Id String @id @default(cuid())
   ledgerId String     @unique
   ledger   Ledger     @relation(fields: [ledgerId], references: [Id])
-  sellerId String     
+  sellerId String
   seller   Seller       @relation(fields: [sellerId], references: [id])
-  buyerId  String     
+  buyerId  String
   buyer    Buyer       @relation(fields: [buyerId], references: [Id])
-  assetId  String     
-  asset    Invoice    @relation(fields: [assetId], references: [Id])
+  assetId  String
+  asset    Asset @relation(fields: [assetId], references: [Id])
   soldPrice String
   status   String
   createdDate   DateTime @default(now())
-  updatedDate   DateTime @default(now()) 
+  updatedDate   DateTime @default(now())
 }
