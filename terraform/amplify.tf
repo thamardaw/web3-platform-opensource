@@ -14,11 +14,11 @@ terraform {
   }
 }
 
-resource "aws_amplify_app" "kblab" {
-  name       = "KblabProduction"
-  repository = "https://github.com/saw1232582000/marketplace-boiler-plate.git"
+resource "aws_amplify_app" "" {
+  name       = ""
+  repository = ""
 
-  access_token = "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"
+  access_token = ""
 
   # The default build_spec added by the Amplify Console for React.
   build_spec = <<-EOT
@@ -51,7 +51,7 @@ resource "aws_amplify_app" "kblab" {
   EOT
 
   platform = "WEB_COMPUTE"
-  iam_service_role_arn = "arn:aws:iam::593318543236:role/service-role/AmplifySSRLoggingRole-dz2zmness07yq"
+  iam_service_role_arn = "arn"
 
   # The default rewrites and redirects added by the Amplify Console.
   custom_rule {
@@ -62,14 +62,14 @@ resource "aws_amplify_app" "kblab" {
 
   environment_variables = {
     DATABASE_PROVIDER = "postgres"
-    DATABASE_URL = "postgresql://postgres:kblab-user-staging@kblab-staging.clzyleulinnc.ap-southeast-1.rds.amazonaws.com:5432/kblab-staging"
+    DATABASE_URL = ""
     DISCORD_CLIENT_ID = ""
     DISCORD_CLIENT_SECRET = ""
-    NEXTAUTH_SECRET = "s0rc5SDrguXaqD9EuseQ9Ebl+DC9eEKOmmg2T2qu+Ys"
-    S3_UPLOAD_BUCKET = "kblab-kyc-staging"
-    S3_UPLOAD_KEY = "AKIAYUJEKP6CCWM63J5L"
-    S3_UPLOAD_REGION = "ap-southeast-1"
-    S3_UPLOAD_SECRET = "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"
+    NEXTAUTH_SECRET = ""
+    S3_UPLOAD_BUCKET = ""
+    S3_UPLOAD_KEY = ""
+    S3_UPLOAD_REGION = ""
+    S3_UPLOAD_SECRET = ""
   }
 }
 
@@ -81,6 +81,6 @@ resource "aws_amplify_branch" "main" {
   stage     = "PRODUCTION"
 
   # environment_variables = {
-    
+
   # }
 }
