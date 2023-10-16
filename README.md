@@ -20,9 +20,8 @@ If you are not familiar with the different technologies used in this project, pl
 Setting database is quite straightforward. You can download postgresql at [Postgres Download Page](https://www.postgresql.org/download/) and install it in your local. Once the postgres was setup, you can add the proper connection url as the string at `.env`
 
 ```bash
-cp .env.copy .env
+cp .env.sample .env
 ```
-
 
 ## Database Migration
 
