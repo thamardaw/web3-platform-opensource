@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE "PrimaryWallet" ALTER COLUMN "updatedDate" SET DEFAULT CURRENT_TIMESTAMP;
+
+-- AlterTable
+ALTER TABLE "Wallet" ALTER COLUMN "updatedDate" SET DEFAULT CURRENT_TIMESTAMP;
